@@ -2,7 +2,6 @@ import streamlit as st
 from auth import show_auth
 import random
 import time
-import cv2
 import matplotlib.pyplot as plt
 import json
 from streamlit_lottie import st_lottie
@@ -223,18 +222,18 @@ elif page == "Live Sensor Data":
 
     st.markdown("---")
 
-    # # 🔐 Load AWS secrets
-    # aws_access_key = st.secrets["AWS_ACCESS_KEY_ID"]
-    # aws_secret_key = st.secrets["AWS_SECRET_ACCESS_KEY"]
-    # region = st.secrets["AWS_REGION"]
-    # table_name = st.secrets["TABLE_NAME"]
+    # 🔐 Load AWS secrets
+    aws_access_key = st.secrets["AWS_ACCESS_KEY_ID"]
+    aws_secret_key = st.secrets["AWS_SECRET_ACCESS_KEY"]
+    region = st.secrets["AWS_REGION"]
+    table_name = st.secrets["TABLE_NAME"]
     
-    import os
+    # import os
 
-    aws_access_key = os.getenv("AWS_ACCESS_KEY_ID")
-    aws_secret_key = os.getenv("AWS_SECRET_ACCESS_KEY")
-    region = os.getenv("AWS_REGION")
-    table_name = os.getenv("TABLE_NAME")
+    # aws_access_key = os.getenv("AWS_ACCESS_KEY_ID")
+    # aws_secret_key = os.getenv("AWS_SECRET_ACCESS_KEY")
+    # region = os.getenv("AWS_REGION")
+    # table_name = os.getenv("TABLE_NAME")
 
     # 🔧 Convert Decimal → float
     def convert_decimal(obj):
@@ -318,14 +317,6 @@ elif page == "Live Sensor Data":
         st.warning("⚠️ No live data found in DynamoDB")     
 
 elif page == "Simulation Mode":
-         # ---- LOAD LOTTIE ----
-    lottie_analysis = load_lottiefile("analysis.json")
-
-        # ---- CENTERED ANIMATION ----
-    col1, col2, col3 = st.columns([1, 3, 1])
-
-    with col2:
-            st_lottie(lottie_analysis, height=550)
     import streamlit as st
 
     # ---- HEADER ----
@@ -415,14 +406,6 @@ elif page == "Simulation Mode":
         st.warning("👆 Select parameters and click **Run Simulation**")
         
 elif page == "Documentation":
-         # ---- LOAD LOTTIE ----
-    lottie_analysis = load_lottiefile("Documentation.json")
-
-        # ---- CENTERED ANIMATION ----
-    col1, col2, col3 = st.columns([1, 3, 1])
-
-    with col2:
-            st_lottie(lottie_analysis, height=550)
 
     import streamlit as st
 
@@ -593,14 +576,7 @@ elif page == "Documentation":
     """)
     
 elif page == "About":
-         # ---- LOAD LOTTIE ----
-    lottie_analysis = load_lottiefile("about.json")
 
-        # ---- CENTERED ANIMATION ----
-    col1, col2, col3 = st.columns([1, 3, 1])
-
-    with col2:
-            st_lottie(lottie_analysis, height=550)
     import streamlit as st
 
     # ---- HEADER ----
@@ -714,14 +690,7 @@ elif page == "About":
     st.success("🚀 Developed under TCS ILP — focused on AI, IoT & Smart Manufacturing")
     
 elif page == "Help / Support":
-         # ---- LOAD LOTTIE ----
-    lottie_analysis = load_lottiefile("call-center.json")
 
-        # ---- CENTERED ANIMATION ----
-    col1, col2, col3 = st.columns([1, 3, 1])
-
-    with col2:
-            st_lottie(lottie_analysis, height=550)
     import streamlit as st
 
     # ---- HEADER ----
@@ -813,7 +782,5 @@ elif page == "Help / Support":
 
     st.info("""
     📧 Email: adi.sarkar2004@gmail.com  
-    📱 Phone: +91 8989028700  
+    📱 Phone: +91 8989028700      
     """)
-
-    st.success("✅ You're all set to explore Automorphic!")
